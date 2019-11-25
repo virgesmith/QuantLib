@@ -28,8 +28,6 @@
 #include <ql/experimental/math/particleswarmoptimization.hpp>
 #include <ql/functional.hpp>
 
-
-#include <boost/tuple/tuple.hpp>
 #include <iostream>
 #include <iomanip>
 

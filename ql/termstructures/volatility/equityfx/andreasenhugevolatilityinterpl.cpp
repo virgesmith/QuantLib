@@ -504,11 +504,11 @@ namespace QuantLib {
         return rTS_;
     }
 
-    boost::tuple<Real, Real, Real>
+    std::tuple<Real, Real, Real>
     AndreasenHugeVolatilityInterpl::calibrationError() const {
         calculate();
 
-        return boost::make_tuple<Real, Real, Real>(
+        return std::make_tuple(
             minError_, maxError_, avgError_);
     }
 
@@ -522,13 +522,13 @@ namespace QuantLib {
     Real AndreasenHugeVolatilityInterpl::getCacheValue(
         Real strike, const TimeValueCacheType::const_iterator& f) const {
 
-        const Real fwd = f->second.get<0>();
+        const Real fwd = std::get<0>(f->second);
         const Real k = std::log(strike / fwd);
 
         const Real s = std::max(gridPoints_[1],
             std::min(*(gridPoints_.end()-2), k));
 
-        return (*(f->second.get<2>()))(s);
+        return (*(std::get<2>(f->second)))(s);
     }
 
     Disposable<Array> AndreasenHugeVolatilityInterpl::getPriceSlice(
@@ -551,7 +551,7 @@ namespace QuantLib {
         const DiscountFactor df = rTS_->discount(t);
 
         if (f != priceCache_.end()) {
-            const Real fwd = f->second.get<0>();
+            const Real fwd = std::get<0>(f->second);
 
             Real price = getCacheValue(strike, f);
 
@@ -582,12 +582,12 @@ namespace QuantLib {
             QL_FAIL("unknown calibration type");
         }
 
-        const Real fwd = spot_->value()*qTS_->discount(t)/df;
+        Real fwd = spot_->value()*qTS_->discount(t)/df;
 
-        priceCache_[t] = boost::make_tuple<
+        priceCache_[t] = std::make_tuple/*<
             Real,
             ext::shared_ptr<Array>,
-            ext::shared_ptr<Interpolation> >(
+            ext::shared_ptr<Interpolation> >*/(
                 fwd, prices,
                 ext::make_shared<CubicNaturalSpline>(
                     gridPoints_.begin()+1, gridPoints_.end()-1,
@@ -661,12 +661,9 @@ namespace QuantLib {
             QL_FAIL("unknown calibration type");
         }
 
-        const Real fwd = spot_->value()*qTS_->discount(t)/rTS_->discount(t);
+        Real fwd = spot_->value()*qTS_->discount(t)/rTS_->discount(t);
 
-        localVolCache_[t] = boost::make_tuple<
-            Real,
-            ext::shared_ptr<Array>,
-            ext::shared_ptr<Interpolation> >(
+        localVolCache_[t] = std::make_tuple(
                 fwd, localVol,
                 ext::make_shared<LinearInterpolation>(
                     gridPoints_.begin()+1, gridPoints_.end()-1,

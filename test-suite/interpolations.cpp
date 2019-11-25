@@ -45,7 +45,6 @@
 #include <ql/math/optimization/levenbergmarquardt.hpp>
 #include <ql/experimental/volatility/noarbsabrinterpolation.hpp>
 #include <boost/foreach.hpp>
-#include <boost/tuple/tuple.hpp>
 #include <boost/assign/std/vector.hpp>
 #include <boost/math/special_functions/fpclassify.hpp>
 
@@ -2377,25 +2376,22 @@ void InterpolationTest::testBSplines() {
     const Natural p = 2;
     const BSpline bspline(p, knots.size()-p-2, knots);
 
-    std::vector<boost::tuple<Natural, Real, Real> > referenceValues;
-    referenceValues += boost::make_tuple(0, -0.95, 9.5238095238e-04),
-        boost::make_tuple(0, -0.01, 0.37337142857),
-        boost::make_tuple(0, 0.49, 0.84575238095),
-        boost::make_tuple(0, 1.21, 0.0),
-        boost::make_tuple(1, 1.49, 0.562987654321),
-        boost::make_tuple(1, 1.59, 0.490888888889),
-        boost::make_tuple(2, 1.99, 0.62429409171),
-        boost::make_tuple(3, 1.19, 0.0),
-        boost::make_tuple(3, 1.99, 0.12382936508),
-        boost::make_tuple(3, 3.59, 0.765914285714);
+    std::vector<std::tuple<Natural, Real, Real> > referenceValues;
+    referenceValues += std::make_tuple(0, -0.95, 9.5238095238e-04),
+        std::make_tuple(0, -0.01, 0.37337142857),
+        std::make_tuple(0, 0.49, 0.84575238095),
+        std::make_tuple(0, 1.21, 0.0),
+        std::make_tuple(1, 1.49, 0.562987654321),
+        std::make_tuple(1, 1.59, 0.490888888889),
+        std::make_tuple(2, 1.99, 0.62429409171),
+        std::make_tuple(3, 1.19, 0.0),
+        std::make_tuple(3, 1.99, 0.12382936508),
+        std::make_tuple(3, 3.59, 0.765914285714);
 
 
     const Real tol = 1e-10;
     for (Size i=0; i < referenceValues.size(); ++i) {
-        const Natural idx = referenceValues[i].get<0>();
-        const Real x = referenceValues[i].get<1>();
-        const Real expected = referenceValues[i].get<2>();
-
+        auto [idx, x, expected] = referenceValues[i];
         const Real calculated = bspline(idx, x);
 
         if (   boost::math::isnan(calculated)

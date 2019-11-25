@@ -175,11 +175,11 @@ namespace {
                     expected.interpolationType,
                     expected.calibrationType));
 
-        const boost::tuple<Real, Real, Real> error =
+        const std::tuple<Real, Real, Real> error =
             andreasenHugeVolInterplation->calibrationError();
 
-        const Real maxError = error.get<1>();
-        const Real avgError = error.get<2>();
+        const Real maxError = std::get<1>(error);
+        const Real avgError = std::get<2>(error);
 
         if (maxError > expected.maxError || avgError > expected.avgError) {
             BOOST_FAIL("Failed to reproduce calibration error"
@@ -897,7 +897,7 @@ void AndreasenHugeVolatilityInterplTest::testDifferentOptimizers() {
         const ext::shared_ptr<OptimizationMethod> optimizationMethod =
             optimizationMethods[i];
 
-        const Real avgError = AndreasenHugeVolatilityInterpl(
+        const Real avgError = std::get<2>(AndreasenHugeVolatilityInterpl(
             data.calibrationSet,
             data.spot,
             data.rTS, data.qTS,
@@ -905,7 +905,7 @@ void AndreasenHugeVolatilityInterplTest::testDifferentOptimizers() {
             AndreasenHugeVolatilityInterpl::Call,
             400,
             Null<Real>(), Null<Real>(),
-            optimizationMethod).calibrationError().get<2>();
+            optimizationMethod).calibrationError());
 
         if (boost::math::isnan(avgError) || avgError > 0.0001) {
             BOOST_FAIL("failed to calibrate Andreasen-Huge "

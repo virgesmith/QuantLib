@@ -26,7 +26,7 @@
 #define quantlib_makecds_hpp
 
 #include <ql/instruments/creditdefaultswap.hpp>
-#include <boost/optional.hpp>
+#include <optional>
 
 namespace QuantLib {
 
@@ -55,8 +55,8 @@ namespace QuantLib {
       private:
         Protection::Side side_;
         Real nominal_;
-        boost::optional<Period> tenor_;
-        boost::optional<Date> termDate_;
+        std::optional<Period> tenor_;
+        std::optional<Date> termDate_;
         Period couponTenor_;
         Real couponRate_;
         Real upfrontRate_;

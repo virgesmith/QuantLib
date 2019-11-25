@@ -39,12 +39,12 @@ namespace QuantLib {
                                Rate runningRate,
                                const DayCounter& dayCounter,
                                BusinessDayConvention paymentConvention,
-                               boost::optional<Real> notional)
+                               std::optional<Real> notional)
     : basket_(basket),
       side_(side),
       upfrontRate_(upfrontRate),
       runningRate_(runningRate),
-      leverageFactor_(notional ? notional.get()/basket->trancheNotional() : 1.),
+      leverageFactor_(notional.value_or(basket->trancheNotional()) / basket->trancheNotional()),
       dayCounter_(dayCounter),
       paymentConvention_(paymentConvention)
     {

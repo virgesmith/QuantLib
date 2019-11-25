@@ -48,7 +48,7 @@ namespace QuantLib {
         */
         bool hasOccurred(
                     const Date& refDate = Date(),
-                    boost::optional<bool> includeRefDate = boost::none) const;
+                    std::optional<bool> includeRefDate = std::nullopt) const;
         //@}
         //! \name CashFlow interface
         //@{

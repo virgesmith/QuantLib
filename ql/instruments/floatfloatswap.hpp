@@ -32,7 +32,7 @@
 #include <ql/instruments/vanillaswap.hpp>
 #include <ql/time/daycounter.hpp>
 #include <ql/time/schedule.hpp>
-#include <boost/optional.hpp>
+#include <optional>
 
 namespace QuantLib {
 
@@ -58,10 +58,10 @@ namespace QuantLib {
             const Real flooredRate1 = Null<Real>(), const Real gearing2 = 1.0,
             const Real spread2 = 0.0, const Real cappedRate2 = Null<Real>(),
             const Real flooredRate2 = Null<Real>(),
-            boost::optional<BusinessDayConvention> paymentConvention1 =
-                boost::none,
-            boost::optional<BusinessDayConvention> paymentConvention2 =
-                boost::none);
+            std::optional<BusinessDayConvention> paymentConvention1 =
+                std::nullopt,
+            std::optional<BusinessDayConvention> paymentConvention2 =
+                std::nullopt);
 
         FloatFloatSwap(
             const VanillaSwap::Type type, const std::vector<Real> &nominal1,
@@ -80,10 +80,10 @@ namespace QuantLib {
             const std::vector<Real> &spread2 = std::vector<Real>(),
             const std::vector<Real> &cappedRate2 = std::vector<Real>(),
             const std::vector<Real> &flooredRate2 = std::vector<Real>(),
-            boost::optional<BusinessDayConvention> paymentConvention1 =
-                boost::none,
-            boost::optional<BusinessDayConvention> paymentConvention2 =
-                boost::none);
+            std::optional<BusinessDayConvention> paymentConvention1 =
+                std::nullopt,
+            std::optional<BusinessDayConvention> paymentConvention2 =
+                std::nullopt);
 
         //! \name Inspectors
         //@{
@@ -126,8 +126,8 @@ namespace QuantLib {
         void fetchResults(const PricingEngine::results *) const;
 
       private:
-        void init(boost::optional<BusinessDayConvention> paymentConvention1,
-                  boost::optional<BusinessDayConvention> paymentConvention2);
+        void init(std::optional<BusinessDayConvention> paymentConvention1,
+                  std::optional<BusinessDayConvention> paymentConvention2);
         void setupExpired() const;
         VanillaSwap::Type type_;
         std::vector<Real> nominal1_, nominal2_;

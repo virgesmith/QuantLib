@@ -40,7 +40,7 @@ namespace QuantLib {
                      const ext::shared_ptr<IborIndex>& iborIndex,
                      Spread spread,
                      const DayCounter& floatingDayCount,
-                     boost::optional<BusinessDayConvention> paymentConvention)
+                     std::optional<BusinessDayConvention> paymentConvention)
     : Swap(2), type_(type), nominal_(nominal),
       fixedSchedule_(fixedSchedule), fixedRate_(fixedRate),
       fixedDayCount_(fixedDayCount),

@@ -61,7 +61,7 @@ namespace QuantLib {
         const ext::shared_ptr<IborIndex> &iborIndex, const Real gearing,
         const Spread spread, const DayCounter &floatingDayCount,
         const bool intermediateCapitalExchange, const bool finalCapitalExchange,
-        boost::optional<BusinessDayConvention> paymentConvention)
+        std::optional<BusinessDayConvention> paymentConvention)
         : Swap(2), type_(type), fixedNominal_(fixedNominal),
           floatingNominal_(floatingNominal), fixedSchedule_(fixedSchedule),
           fixedRate_(fixedRate), fixedDayCount_(fixedDayCount),
@@ -89,7 +89,7 @@ namespace QuantLib {
         const std::vector<Real> &gearing, const std::vector<Spread> &spread,
         const DayCounter &floatingDayCount,
         const bool intermediateCapitalExchange, const bool finalCapitalExchange,
-        boost::optional<BusinessDayConvention> paymentConvention)
+        std::optional<BusinessDayConvention> paymentConvention)
         : Swap(2), type_(type), fixedNominal_(fixedNominal),
           floatingNominal_(floatingNominal), fixedSchedule_(fixedSchedule),
           fixedRate_(fixedRate), fixedDayCount_(fixedDayCount),

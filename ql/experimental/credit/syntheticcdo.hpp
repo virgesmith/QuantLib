@@ -123,7 +123,7 @@ namespace QuantLib {
                       Rate runningRate,
                       const DayCounter& dayCounter,
                       BusinessDayConvention paymentConvention,
-                      boost::optional<Real> notional = boost::none);
+                      std::optional<Real> notional = std::nullopt);
 
         const ext::shared_ptr<Basket>& basket() const { return basket_; }
 

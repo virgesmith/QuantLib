@@ -36,7 +36,7 @@ namespace QuantLib {
               const ext::shared_ptr<CatRisk> catRisk,
               const Handle<YieldTermStructure>& discountCurve =
                                                 Handle<YieldTermStructure>(),
-              boost::optional<bool> includeSettlementDateFlows = boost::none);
+              std::optional<bool> includeSettlementDateFlows = std::nullopt);
         void calculate() const;
         Handle<YieldTermStructure> discountCurve() const {
             return discountCurve_;
@@ -58,7 +58,7 @@ namespace QuantLib {
       private:
         ext::shared_ptr<CatRisk> catRisk_;
         Handle<YieldTermStructure> discountCurve_;
-        boost::optional<bool> includeSettlementDateFlows_;
+        std::optional<bool> includeSettlementDateFlows_;
     };
 
 }

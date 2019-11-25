@@ -30,7 +30,7 @@
 #include <ql/patterns/visitor.hpp>
 #include <ql/utilities/null.hpp>
 #include <ql/shared_ptr.hpp>
-#include <boost/optional.hpp>
+#include <optional>
 #include <vector>
 
 namespace QuantLib {
@@ -63,7 +63,7 @@ namespace QuantLib {
         virtual void accept(AcyclicVisitor&);
         //@}
       private:
-        boost::optional<Bond::Price> price_;
+        std::optional<Bond::Price> price_;
         Type type_;
         Date date_;
     };

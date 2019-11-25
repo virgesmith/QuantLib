@@ -694,7 +694,7 @@ void CreditDefaultSwapTest::testIsdaEngine() {
 
             ext::shared_ptr<IsdaCdsEngine> engine = ext::make_shared<IsdaCdsEngine>(
                 probabilityCurve, recoveries[k], discountCurve,
-                boost::none, IsdaCdsEngine::Taylor, IsdaCdsEngine::HalfDayBias,
+                std::nullopt, IsdaCdsEngine::Taylor, IsdaCdsEngine::HalfDayBias,
                 IsdaCdsEngine::Piecewise);
 
             ext::shared_ptr<CreditDefaultSwap> conventionalTrade =

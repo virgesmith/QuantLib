@@ -29,7 +29,7 @@
 #include <ql/instruments/swap.hpp>
 #include <ql/time/daycounter.hpp>
 #include <ql/time/schedule.hpp>
-#include <boost/optional.hpp>
+#include <optional>
 
 namespace QuantLib {
 
@@ -78,8 +78,8 @@ namespace QuantLib {
             const ext::shared_ptr<IborIndex>& iborIndex,
             Spread spread,
             const DayCounter& floatingDayCount,
-            boost::optional<BusinessDayConvention> paymentConvention =
-                                                                 boost::none);
+            std::optional<BusinessDayConvention> paymentConvention =
+                                                                 std::nullopt);
         //! \name Inspectors
         //@{
         Type type() const;

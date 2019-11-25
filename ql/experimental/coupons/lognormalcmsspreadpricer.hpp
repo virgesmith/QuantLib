@@ -65,7 +65,7 @@ namespace QuantLib {
             const Handle<YieldTermStructure> &couponDiscountCurve =
                 Handle<YieldTermStructure>(),
             const Size IntegrationPoints = 16,
-            const boost::optional<VolatilityType> volatilityType= boost::none,
+            const std::optional<VolatilityType> volatilityType= std::nullopt,
             const Real shift1 = Null<Real>(), const Real shift2 = Null<Real>());
 
         /* */

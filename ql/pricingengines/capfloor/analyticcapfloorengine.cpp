@@ -55,7 +55,7 @@ namespace QuantLib {
         bool includeRefDatePayments =
             Settings::instance().includeReferenceDateEvents();
         if (referenceDate == Settings::instance().evaluationDate()) {
-            boost::optional<bool> includeTodaysPayments =
+            std::optional<bool> includeTodaysPayments =
                 Settings::instance().includeTodaysCashFlows();
             if (includeTodaysPayments)
                 includeRefDatePayments = *includeTodaysPayments;

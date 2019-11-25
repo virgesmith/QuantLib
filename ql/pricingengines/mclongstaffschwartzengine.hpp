@@ -81,8 +81,8 @@ namespace QuantLib {
             Size maxSamples,
             BigNatural seed,
             Size nCalibrationSamples = Null<Size>(),
-            boost::optional<bool> brownianBridgeCalibration = boost::none,
-            boost::optional<bool> antitheticVariateCalibration = boost::none,
+            std::optional<bool> brownianBridgeCalibration = std::nullopt,
+            std::optional<bool> antitheticVariateCalibration = std::nullopt,
             BigNatural seedCalibration = Null<Size>());
 
         void calculate() const;
@@ -129,8 +129,8 @@ namespace QuantLib {
             Size maxSamples,
             BigNatural seed,
             Size nCalibrationSamples,
-            boost::optional<bool> brownianBridgeCalibration,
-            boost::optional<bool> antitheticVariateCalibration,
+            std::optional<bool> brownianBridgeCalibration,
+            std::optional<bool> antitheticVariateCalibration,
             BigNatural seedCalibration)
     : McSimulation<MC,RNG,S> (antitheticVariate, controlVariate),
       process_            (process),

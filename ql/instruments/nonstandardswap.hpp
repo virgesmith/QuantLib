@@ -28,7 +28,7 @@
 #include <ql/instruments/vanillaswap.hpp>
 #include <ql/time/daycounter.hpp>
 #include <ql/time/schedule.hpp>
-#include <boost/optional.hpp>
+#include <optional>
 
 namespace QuantLib {
 
@@ -52,8 +52,8 @@ namespace QuantLib {
             const Spread spread, const DayCounter &floatingDayCount,
             const bool intermediateCapitalExchange = false,
             const bool finalCapitalExchange = false,
-            boost::optional<BusinessDayConvention> paymentConvention =
-                boost::none);
+            std::optional<BusinessDayConvention> paymentConvention =
+                std::nullopt);
         NonstandardSwap(
             const VanillaSwap::Type type, const std::vector<Real> &fixedNominal,
             const std::vector<Real> &floatingNominal,
@@ -64,8 +64,8 @@ namespace QuantLib {
             const DayCounter &floatingDayCount,
             const bool intermediateCapitalExchange = false,
             const bool finalCapitalExchange = false,
-            boost::optional<BusinessDayConvention> paymentConvention =
-                boost::none);
+            std::optional<BusinessDayConvention> paymentConvention =
+                std::nullopt);
         //! \name Inspectors
         //@{
         VanillaSwap::Type type() const;

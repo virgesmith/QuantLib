@@ -46,7 +46,7 @@ namespace QuantLib {
         const Handle<Quote> &correlation,
         const Handle<YieldTermStructure> &couponDiscountCurve,
         const Size integrationPoints,
-        const boost::optional<VolatilityType> volatilityType,
+        const std::optional<VolatilityType> volatilityType,
         const Real shift1, const Real shift2)
         : CmsSpreadCouponPricer(correlation), cmsPricer_(cmsPricer),
           couponDiscountCurve_(couponDiscountCurve) {
@@ -64,7 +64,7 @@ namespace QuantLib {
 
         cnd_ = ext::make_shared<CumulativeNormalDistribution>(0.0, 1.0);
 
-        if(volatilityType == boost::none) {
+        if(volatilityType == std::nullopt) {
             QL_REQUIRE(shift1 == Null<Real>() && shift2 == Null<Real>(),
                        "if volatility type is inherited, no shifts should be "
                        "specified");

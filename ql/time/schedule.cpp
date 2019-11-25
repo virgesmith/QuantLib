@@ -72,11 +72,11 @@ namespace QuantLib {
     Schedule::Schedule(const std::vector<Date>& dates,
                        const Calendar& calendar,
                        BusinessDayConvention convention,
-                       boost::optional<BusinessDayConvention>
+                       std::optional<BusinessDayConvention>
                                          terminationDateConvention,
-                       const boost::optional<Period> tenor,
-                       boost::optional<DateGeneration::Rule> rule,
-                       boost::optional<bool> endOfMonth,
+                       const std::optional<Period> tenor,
+                       std::optional<DateGeneration::Rule> rule,
+                       std::optional<bool> endOfMonth,
                        const std::vector<bool>& isRegular)
     : tenor_(tenor), calendar_(calendar),
       convention_(convention),
@@ -84,7 +84,7 @@ namespace QuantLib {
       rule_(rule),
       dates_(dates), isRegular_(isRegular) {
 
-        if (tenor != boost::none && !allowsEndOfMonth(*tenor))
+        if (tenor != std::nullopt && !allowsEndOfMonth(*tenor))
             endOfMonth_ = false;
         else
             endOfMonth_ = endOfMonth;

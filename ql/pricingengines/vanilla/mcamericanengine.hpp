@@ -64,7 +64,7 @@ namespace QuantLib {
              Size polynomOrder,
              LsmBasisSystem::PolynomType polynomType,
              Size nCalibrationSamples = Null<Size>(),
-             boost::optional<bool> antitheticVariateCalibration = boost::none,
+             std::optional<bool> antitheticVariateCalibration = std::nullopt,
              BigNatural seedCalibration = Null<Size>());
 
         void calculate() const;
@@ -135,7 +135,7 @@ namespace QuantLib {
         BigNatural seed_;
         Size polynomOrder_;
         LsmBasisSystem::PolynomType polynomType_;
-        boost::optional<bool> antitheticCalibration_;
+        std::optional<bool> antitheticCalibration_;
         BigNatural seedCalibration_;
     };
 
@@ -146,7 +146,7 @@ namespace QuantLib {
         bool controlVariate, Size requiredSamples, Real requiredTolerance,
         Size maxSamples, BigNatural seed, Size polynomOrder,
         LsmBasisSystem::PolynomType polynomType, Size nCalibrationSamples,
-        boost::optional<bool> antitheticVariateCalibration,
+        std::optional<bool> antitheticVariateCalibration,
         BigNatural seedCalibration)
         : MCLongstaffSchwartzEngine<VanillaOption::engine, SingleVariate, RNG,
                                     S, RNG_Calibration>(
@@ -259,7 +259,7 @@ namespace QuantLib {
           samples_(Null<Size>()), maxSamples_(Null<Size>()),
           calibrationSamples_(2048), tolerance_(Null<Real>()), seed_(0),
           polynomOrder_(2), polynomType_(LsmBasisSystem::Monomial),
-          antitheticCalibration_(boost::none), seedCalibration_(Null<Size>()) {}
+          antitheticCalibration_(std::nullopt), seedCalibration_(Null<Size>()) {}
 
     template <class RNG, class S, class RNG_Calibration>
     inline MakeMCAmericanEngine<RNG, S, RNG_Calibration> &

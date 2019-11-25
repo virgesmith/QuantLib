@@ -43,8 +43,8 @@ namespace QuantLib {
         const Real spread1, const Real cappedRate1, const Real flooredRate1,
         const Real gearing2, const Real spread2, const Real cappedRate2,
         const Real flooredRate2,
-        boost::optional<BusinessDayConvention> paymentConvention1,
-        boost::optional<BusinessDayConvention> paymentConvention2)
+        std::optional<BusinessDayConvention> paymentConvention1,
+        std::optional<BusinessDayConvention> paymentConvention2)
         : Swap(2), type_(type),
           nominal1_(std::vector<Real>(schedule1.size() - 1, nominal1)),
           nominal2_(std::vector<Real>(schedule2.size() - 1, nominal2)),
@@ -78,8 +78,8 @@ namespace QuantLib {
         const std::vector<Real> &gearing2, const std::vector<Real> &spread2,
         const std::vector<Real> &cappedRate2,
         const std::vector<Real> &flooredRate2,
-        boost::optional<BusinessDayConvention> paymentConvention1,
-        boost::optional<BusinessDayConvention> paymentConvention2)
+        std::optional<BusinessDayConvention> paymentConvention1,
+        std::optional<BusinessDayConvention> paymentConvention2)
         : Swap(2), type_(type), nominal1_(nominal1), nominal2_(nominal2),
           schedule1_(schedule1), schedule2_(schedule2), index1_(index1),
           index2_(index2), gearing1_(gearing1), gearing2_(gearing2),
@@ -94,8 +94,8 @@ namespace QuantLib {
     }
 
     void FloatFloatSwap::init(
-        boost::optional<BusinessDayConvention> paymentConvention1,
-        boost::optional<BusinessDayConvention> paymentConvention2) {
+        std::optional<BusinessDayConvention> paymentConvention1,
+        std::optional<BusinessDayConvention> paymentConvention2) {
 
         QL_REQUIRE(nominal1_.size() == schedule1_.size() - 1,
                    "nominal1 size (" << nominal1_.size()

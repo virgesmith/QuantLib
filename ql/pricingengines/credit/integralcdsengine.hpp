@@ -36,14 +36,14 @@ namespace QuantLib {
               const Handle<DefaultProbabilityTermStructure>&,
               Real recoveryRate,
               const Handle<YieldTermStructure>& discountCurve,
-              boost::optional<bool> includeSettlementDateFlows = boost::none);
+              std::optional<bool> includeSettlementDateFlows = std::nullopt);
         void calculate() const;
       private:
         Period integrationStep_;
         Handle<DefaultProbabilityTermStructure> probability_;
         Real recoveryRate_;
         Handle<YieldTermStructure> discountCurve_;
-        boost::optional<bool> includeSettlementDateFlows_;
+        std::optional<bool> includeSettlementDateFlows_;
     };
 
 }

@@ -26,7 +26,7 @@ namespace QuantLib {
     MonteCarloCatBondEngine::MonteCarloCatBondEngine(
                              const ext::shared_ptr<CatRisk> catRisk,
                              const Handle<YieldTermStructure>& discountCurve,
-                             boost::optional<bool> includeSettlementDateFlows)
+                             std::optional<bool> includeSettlementDateFlows)
     : catRisk_(catRisk), discountCurve_(discountCurve),
       includeSettlementDateFlows_(includeSettlementDateFlows) {
         registerWith(discountCurve_);

@@ -21,7 +21,7 @@
 #include <ql/models/marketmodels/curvestate.hpp>
 #include <ql/models/marketmodels/utilities.hpp>
 #include <ql/instruments/payoffs.hpp>
-#include <ql/auto_ptr.hpp>
+
 
 namespace QuantLib {
 
@@ -55,9 +55,9 @@ namespace QuantLib {
         return (currentIndex_ == lastIndex_);
     }
 
-    QL_UNIQUE_OR_AUTO_PTR<MarketModelMultiProduct>
+    std::unique_ptr<MarketModelMultiProduct>
     MultiStepCoterminalSwaptions::clone() const {
-        return QL_UNIQUE_OR_AUTO_PTR<MarketModelMultiProduct>(
+        return std::unique_ptr<MarketModelMultiProduct>(
                                          new MultiStepCoterminalSwaptions(*this));
     }
 

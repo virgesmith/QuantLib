@@ -28,7 +28,7 @@
 #include <ql/pricingengines/blackformula.hpp>
 #include <ql/termstructures/volatility/equityfx/hestonblackvolsurface.hpp>
 #include <ql/functional.hpp>
-#include <boost/scoped_ptr.hpp>
+
 #include <limits>
 
 namespace QuantLib {
@@ -98,7 +98,7 @@ namespace QuantLib {
         const Real sigma = hestonModel_->sigma();
         const Real v0    = hestonModel_->v0();
 
-        const boost::scoped_ptr<AnalyticHestonEngine> hestonEngine(
+        const std::unique_ptr<AnalyticHestonEngine> hestonEngine(
             new AnalyticHestonEngine(
                 hestonModel_.currentLink(), cpxLogFormula_, integration_));
 

@@ -19,7 +19,7 @@
 #include <ql/models/marketmodels/products/multistep/multisteptarn.hpp>
 #include <ql/models/marketmodels/curvestate.hpp>
 #include <ql/models/marketmodels/utilities.hpp>
-#include <ql/auto_ptr.hpp>
+
 #include <cmath>
 
 namespace QuantLib {
@@ -85,9 +85,9 @@ namespace QuantLib {
         return true;
     }
 
-    QL_UNIQUE_OR_AUTO_PTR<MarketModelMultiProduct>
+    std::unique_ptr<MarketModelMultiProduct>
     MultiStepTarn::clone() const {
-        return QL_UNIQUE_OR_AUTO_PTR<MarketModelMultiProduct>(
+        return std::unique_ptr<MarketModelMultiProduct>(
                                                  new MultiStepTarn(*this));
     }
 

@@ -32,7 +32,7 @@
 #include <ql/methods/finitedifferences/utilities/fdmaffinemodelswapinnervalue.hpp>
 #include <ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp>
 
-#include <boost/scoped_ptr.hpp>
+
 
 namespace QuantLib {
 
@@ -112,7 +112,7 @@ namespace QuantLib {
                                      calculator, maturity,
                                      tGrid_, dampingSteps_ };
 
-        const boost::scoped_ptr<FdmHullWhiteSolver> solver(
+        const std::unique_ptr<FdmHullWhiteSolver> solver(
             new FdmHullWhiteSolver(model_, solverDesc, schemeDesc_));
 
         results_.value = solver->valueAt(0.0);

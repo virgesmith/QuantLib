@@ -44,7 +44,7 @@
 #include <ql/methods/finitedifferences/utilities/localvolrndcalculator.hpp>
 #include <ql/methods/finitedifferences/utilities/squarerootprocessrndcalculator.hpp>
 
-#include <boost/scoped_ptr.hpp>
+
 #include <boost/assign/std/vector.hpp>
 
 #include <functional>
@@ -228,7 +228,7 @@ namespace QuantLib {
             }
 
           private:
-            const boost::scoped_ptr<T> scheme_;
+            const std::unique_ptr<T> scheme_;
         };
 
         ext::shared_ptr<FdmScheme> fdmSchemeFactory(

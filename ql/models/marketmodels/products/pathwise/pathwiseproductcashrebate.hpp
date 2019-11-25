@@ -62,11 +62,7 @@ namespace QuantLib {
                                   std::vector<Size>& numberCashFlowsThisStep,
                                   std::vector<std::vector<MarketModelPathwiseMultiProduct::CashFlow> >& cashFlowsGenerated);
 
-        #if defined(QL_USE_STD_UNIQUE_PTR)
         virtual std::unique_ptr<MarketModelPathwiseMultiProduct> clone() const;
-        #else
-        virtual std::auto_ptr<MarketModelPathwiseMultiProduct> clone() const;
-        #endif
 
       private:
         EvolutionDescription evolution_;

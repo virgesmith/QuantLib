@@ -76,7 +76,7 @@ namespace QuantLib {
         const FdmSchemeDesc schemeDesc_;
 
         mutable ext::shared_ptr<FdmNdimSolver<N> > solver_;
-        BOOST_STATIC_ASSERT(N >= 3); // KlugeExtOU solver can't be applied on meshes
+        static_assert(N >= 3); // KlugeExtOU solver can't be applied on meshes
                                      // with less than three dimensions
     };
 }

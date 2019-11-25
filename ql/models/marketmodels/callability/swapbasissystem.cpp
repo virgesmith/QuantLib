@@ -20,7 +20,7 @@
 #include <ql/models/marketmodels/callability/swapbasissystem.hpp>
 #include <ql/models/marketmodels/curvestate.hpp>
 #include <ql/models/marketmodels/utilities.hpp>
-#include <ql/auto_ptr.hpp>
+
 
 namespace QuantLib {
 
@@ -76,9 +76,9 @@ namespace QuantLib {
             results.push_back(currentState.coterminalSwapRate(rateIndex+1));
     }
 
-    QL_UNIQUE_OR_AUTO_PTR<MarketModelBasisSystem>
+    std::unique_ptr<MarketModelBasisSystem>
     SwapBasisSystem::clone() const {
-        return QL_UNIQUE_OR_AUTO_PTR<MarketModelBasisSystem>(
+        return std::unique_ptr<MarketModelBasisSystem>(
                                                   new SwapBasisSystem(*this));
     }
 

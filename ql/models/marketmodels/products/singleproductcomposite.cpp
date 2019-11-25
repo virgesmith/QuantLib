@@ -18,7 +18,7 @@
 */
 
 #include <ql/models/marketmodels/products/singleproductcomposite.hpp>
-#include <ql/auto_ptr.hpp>
+
 
 namespace QuantLib {
 
@@ -71,9 +71,9 @@ namespace QuantLib {
         return done;
     }
 
-    QL_UNIQUE_OR_AUTO_PTR<MarketModelMultiProduct>
+    std::unique_ptr<MarketModelMultiProduct>
     SingleProductComposite::clone() const {
-        return QL_UNIQUE_OR_AUTO_PTR<MarketModelMultiProduct>(
+        return std::unique_ptr<MarketModelMultiProduct>(
                                            new SingleProductComposite(*this));
     }
 

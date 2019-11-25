@@ -21,7 +21,7 @@
 
 #include <ql/termstructures/yield/nonlinearfittingmethods.hpp>
 #include <ql/math/bernsteinpolynomial.hpp>
-#include <ql/auto_ptr.hpp>
+
 
 namespace QuantLib {
 
@@ -36,9 +36,9 @@ namespace QuantLib {
         const Array& l2)
         : FittedBondDiscountCurve::FittingMethod(constrainAtZero, weights, ext::shared_ptr<OptimizationMethod>(), l2) {}
 
-    QL_UNIQUE_OR_AUTO_PTR<FittedBondDiscountCurve::FittingMethod>
+    std::unique_ptr<FittedBondDiscountCurve::FittingMethod>
     ExponentialSplinesFitting::clone() const {
-        return QL_UNIQUE_OR_AUTO_PTR<FittedBondDiscountCurve::FittingMethod>(
+        return std::unique_ptr<FittedBondDiscountCurve::FittingMethod>(
                                         new ExponentialSplinesFitting(*this));
     }
 
@@ -82,9 +82,9 @@ namespace QuantLib {
         const Array& l2)
         : FittedBondDiscountCurve::FittingMethod(true, weights, ext::shared_ptr<OptimizationMethod>(), l2) {}
 
-    QL_UNIQUE_OR_AUTO_PTR<FittedBondDiscountCurve::FittingMethod>
+    std::unique_ptr<FittedBondDiscountCurve::FittingMethod>
     NelsonSiegelFitting::clone() const {
-        return QL_UNIQUE_OR_AUTO_PTR<FittedBondDiscountCurve::FittingMethod>(
+        return std::unique_ptr<FittedBondDiscountCurve::FittingMethod>(
                                               new NelsonSiegelFitting(*this));
     }
 
@@ -113,9 +113,9 @@ namespace QuantLib {
         const Array& l2)
         : FittedBondDiscountCurve::FittingMethod(true, weights, ext::shared_ptr<OptimizationMethod>(), l2) {}
 
-    QL_UNIQUE_OR_AUTO_PTR<FittedBondDiscountCurve::FittingMethod>
+    std::unique_ptr<FittedBondDiscountCurve::FittingMethod>
     SvenssonFitting::clone() const {
-        return QL_UNIQUE_OR_AUTO_PTR<FittedBondDiscountCurve::FittingMethod>(
+        return std::unique_ptr<FittedBondDiscountCurve::FittingMethod>(
                                               new SvenssonFitting(*this));
     }
 
@@ -197,9 +197,9 @@ namespace QuantLib {
         return splines_(i,t);
     }
 
-    QL_UNIQUE_OR_AUTO_PTR<FittedBondDiscountCurve::FittingMethod>
+    std::unique_ptr<FittedBondDiscountCurve::FittingMethod>
     CubicBSplinesFitting::clone() const {
-        return QL_UNIQUE_OR_AUTO_PTR<FittedBondDiscountCurve::FittingMethod>(
+        return std::unique_ptr<FittedBondDiscountCurve::FittingMethod>(
                                              new CubicBSplinesFitting(*this));
     }
 
@@ -250,9 +250,9 @@ namespace QuantLib {
                                                  ext::shared_ptr<OptimizationMethod>(), l2),
         size_(constrainAtZero ? degree : degree + 1) {}
 
-    QL_UNIQUE_OR_AUTO_PTR<FittedBondDiscountCurve::FittingMethod>
+    std::unique_ptr<FittedBondDiscountCurve::FittingMethod>
     SimplePolynomialFitting::clone() const {
-        return QL_UNIQUE_OR_AUTO_PTR<FittedBondDiscountCurve::FittingMethod>(
+        return std::unique_ptr<FittedBondDiscountCurve::FittingMethod>(
                                           new SimplePolynomialFitting(*this));
     }
 
@@ -285,9 +285,9 @@ namespace QuantLib {
         QL_REQUIRE(!discountingCurve_.empty(), "Discounting curve cannot be empty");
     }
 
-    QL_UNIQUE_OR_AUTO_PTR<FittedBondDiscountCurve::FittingMethod>
+    std::unique_ptr<FittedBondDiscountCurve::FittingMethod>
     SpreadFittingMethod::clone() const {
-        return QL_UNIQUE_OR_AUTO_PTR<FittedBondDiscountCurve::FittingMethod>(
+        return std::unique_ptr<FittedBondDiscountCurve::FittingMethod>(
                                           new SpreadFittingMethod(*this));
     }
 

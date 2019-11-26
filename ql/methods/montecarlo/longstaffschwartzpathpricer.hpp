@@ -74,8 +74,8 @@ namespace QuantLib {
 
         mutable QuantLib::IncrementalStatistics exerciseProbability_;
 
-        boost::scoped_array<Array> coeff_;
-        boost::scoped_array<DiscountFactor> dF_;
+        std::unique_ptr<Array[]> coeff_;
+        std::unique_ptr<DiscountFactor[]> dF_;
 
         mutable std::vector<PathType> paths_;
         const   std::vector<ext::function<Real(StateType)> > v_;

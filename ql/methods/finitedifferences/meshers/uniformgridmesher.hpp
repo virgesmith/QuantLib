@@ -52,7 +52,7 @@ namespace QuantLib {
         Disposable<Array> locations(Size direction) const;
 
       private:
-        boost::scoped_array<Real> dx_;
+        std::unique_ptr<Real[]> dx_;
         std::vector<std::vector<Real> > locations_;
     };
 }
